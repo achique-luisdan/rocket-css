@@ -96,7 +96,6 @@ function advance(){
 function collision(){
   for (let i = 0; i < 10; i= i +1){
     if (meteorites[i].column === rocket.column && meteorites[i].row === rocket.row) {
-      console.warn('collision');
       rocket = new Rocket();
       rocket.setDefault();
       generateMeteorites();
@@ -104,45 +103,88 @@ function collision(){
   }
 }
 
+function right (){
+  if(rocket.column <= 11){
+    rocket.column +=  1;
+  }
+  render();
+}
+
+function up (){
+  if(rocket.row>= 2){
+    rocket.row -=  1;
+  }
+  render();
+}
+
+function down (){
+  if(rocket.row <= 5){
+    rocket.row +=  1;
+  }
+  render();
+}
+
+
+function left (){
+  if(rocket.column >= 2){
+    rocket.column -=  1;
+  }
+  render();
+}
+
+function mark (){
+  if (rocket.mark.column !== null){
+    rocket.column =  rocket.mark.column ;
+    rocket.row = rocket.mark.row;
+    rocket.mark.column = null;
+    rocket.mark.row = null;
+  } else{
+    rocket.mark.column = rocket.column;
+    rocket.mark.row = rocket.row;
+  }
+  render();
+}
+
+
+
 function move (){
   document.addEventListener('keydown', (event) => {
     const code = event.code;
     if( code === 'ArrowRight'){
-      if(rocket.column <= 11){
-        rocket.column +=  1;
-      }
+      right();
     }
     else if( code === 'ArrowLeft'){
-      if(rocket.column >= 2){
-        rocket.column -=  1;
-      }
+      left()
     }
     else if (code === 'ArrowUp'){
-      if(rocket.row>= 2){
-        rocket.row -=  1;
-      }
+      up();
     }
     else if (code === 'ArrowDown'){
-      if(rocket.row <= 5){
-        rocket.row +=  1;
-      }
+      down();
     }
     else if (code === 'Space'){
-      if (rocket.mark.column !== null){
-        rocket.column =  rocket.mark.column ;
-        rocket.row = rocket.mark.row;
-        rocket.mark.column = null;
-        rocket.mark.row = null;
-      } else{
-        rocket.mark.column = rocket.column;
-        rocket.mark.row = rocket.row;
-      }
+      mark();
     }
     render();
   }, false);
+}
+
+
+function gamepad () {
+  const rightUI = document.getElementById("right");
+  rightUI.addEventListener("click", right, false);
+  const upUI = document.getElementById("up");
+  upUI.addEventListener("click", up, false);
+  const leftUI = document.getElementById("left");
+  leftUI.addEventListener("click", left, false);
+  const downUI = document.getElementById("down");
+  downUI.addEventListener("click", down, false);
+  const markUi = document.getElementById("space");
+  markUi.addEventListener("click", mark, false);
 }
 
 setInterval(advance, 1000);
 generateMeteorites();
 render()
 move();
+gamepad();

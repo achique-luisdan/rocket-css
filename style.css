@@ -1,0 +1,61 @@
+* {
+  box-sizing: border-box;
+  margin: 0px;
+  padding: 0px;
+  font-family: sans-serif;
+}
+
+section.map {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: repeat(6, 1fr);
+  background: lightgray;
+}
+
+div.rocket {
+  display: flex;
+  gap: 3px;
+  margin: 2px;
+}
+
+div.rocket > div.cylinder {
+  height: auto;
+  width: 100%;
+  background: grey;
+  border-top-left-radius: 50%;
+  border-top-right-radius: 50%;
+}
+
+div.rocket > div.flipper {
+  height: 30px;
+  width: 15px;
+  background: LightCoral;
+  align-self: flex-end;
+}
+
+div.rocket > div.flipper.left{
+  border-top-left-radius: 100%;
+}
+
+div.rocket > div.flipper.right{
+  border-top-right-radius: 100%;
+}
+
+div.mark {
+  background: #2ECC71;
+  border-radius: 50%;
+  width: 100%;
+  height: auto;
+  z-index: 2;
+}
+
+div.meteorite {
+  background: wheat;
+  border-radius: 50%;
+  width: 100%;
+  height: auto
+}
+
+h3 {
+  text-align: center;
+}

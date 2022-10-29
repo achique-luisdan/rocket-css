@@ -61,8 +61,8 @@ h3 {
 }
 
 div.gamepad {
-  width: 110px;
-  height: 110px;
+  width: 200px;
+  height: 200px;
   background-color: papayawhip;
   border: #2ECC71 solid 2px;
   border-radius: 50%;

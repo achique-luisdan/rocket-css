@@ -16,7 +16,10 @@ div.rocket {
   display: flex;
   gap: 3px;
   margin: 2px;
+  width: auto;
+  height: 50px;
 }
+
 
 div.rocket > div.cylinder {
   height: auto;
@@ -27,8 +30,8 @@ div.rocket > div.cylinder {
 }
 
 div.rocket > div.flipper {
-  height: 30px;
-  width: 15px;
+  height: 80%;
+  width: 100%;
   background: LightCoral;
   align-self: flex-end;
 }
@@ -49,11 +52,26 @@ div.mark {
   z-index: 2;
 }
 
+@keyframes drift {
+  from {
+    margin-top:  10px;
+    margin-bottom: 10px;
+  }
+
+  to {
+    margin-top:  0px;
+    margin-bottom: 0px;
+  }
+}
+
 div.meteorite {
   background: wheat;
   border-radius: 50%;
   width: 100%;
-  height: auto
+  height: auto;
+  animation-duration: 4s;
+  animation-name: drift;
+  animation-iteration-count: infinite;
 }
 
 h3 {
@@ -64,7 +82,7 @@ div.gamepad {
   width: 200px;
   height: 200px;
   background-color: papayawhip;
-  border: #2ECC71 solid 2px;
+  border: grey solid 2px;
   border-radius: 50%;
   margin: auto;
   margin-top: 10px;
@@ -78,7 +96,7 @@ div.gamepad {
 div.gamepad > button {
   border-radius: 50%;
   background-color: lemonchiffon;
-  border: #2ECC71 solid 1px;
+  border: grey solid 1px;
 }
 
 div.gamepad > button:nth-child(1){
